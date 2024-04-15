@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FileAcessPractice
+{
+    public class Shops
+    {
+        static void Main(string[] args)
+        {
+            addRecord("Pineapple", "£9", @"C:\users\774244\OneDrive - hull.ac.uk\Desktop\PizzaHut.txt");
+
+
+        }
+        // \ exit character always have a @ next to file path names so that they arent just exit files
+        public static void addRecord(string Name, string price, string filepath)
+        {
+            Console.WriteLine(price);
+            try
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
+                {
+                    file.WriteLine("\n" + Name + "," + price);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("ERROR", ex);
+            }
+
+        }
+    }
+}
+
+
